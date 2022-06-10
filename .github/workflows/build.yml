@@ -26,11 +26,6 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     
-    - name: Generate app version
-      id: app-version
-      run: echo "::set-output name=appVersion::$(perl -ne 'print "$1\n" if /"version":\s*"(.*?)"/' package.json)"
-
-    
     - name: download artifacts 
       uses: actions/upload-artifact@v3
       with:
@@ -38,28 +33,7 @@ jobs:
         path: |
           artifact
           !artifact/**/*.md
-    - name: Archive code coverage results
-      uses: actions/upload-artifact@v3
-      with:
-        name: code-coverage-report
-        path: output/test/code-coverage.html
-        
-#     - name: Extract tag name
-#       id: tag
-#       uses: actions/github-script@0.2.0
-#       with:
-#         github-token: ${{ secrets.GITHUB_TOKEN }}
-#         script: |
-#             return context.payload.ref.replace(/\/refs\/tags\//, '');
             
-    - name: Echo
-      run: echo ${{ steps.tag.outputs.result }}
-        
-    - name: Get the version
-      id: get_version
-      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-      
- 
     - name: Extract tag name
       id: tag
       uses: actions/github-script@0.2.0
@@ -67,5 +41,11 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
             return context.payload.ref.replace(/\/refs\/tags\//, '');
+            
     - name: Echo
-      run: echo ${{ steps.tag.outputs.result }}
+      run: echo ${{"Tag Created !!!" }}
+      
+#       run: echo ${{ steps.tag.outputs.result }}
+      
+ 
+  
