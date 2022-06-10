@@ -59,14 +59,7 @@ jobs:
       id: get_version
       run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       
-    - name: GitHub Script
-      uses: actions/github-script@v6.1.0
-      with:
-        # The script to run
-        github-token:  ${{ github.token }}
-        user-agent: actions/github-script
-        result-encoding:  string
-        
+ 
     - name: Extract tag name
       id: tag
       uses: actions/github-script@0.2.0
