@@ -26,13 +26,13 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     
-    - name: Archive production artifacts
+    - name: download artifacts 
       uses: actions/upload-artifact@v3
       with:
         name: dist-without-markdown
         path: |
-          dist
-          !dist/**/*.md
+          artifact
+          !artifact/**/*.md
     - name: Archive code coverage results
       uses: actions/upload-artifact@v3
       with:
