@@ -44,16 +44,16 @@ jobs:
         name: code-coverage-report
         path: output/test/code-coverage.html
         
-    - name: Create tag
-      uses: actions/github-script@v5
-      with:
-        script: |
-          github.rest.git.createRef({
-          owner: context.repo.owner,
-          repo: context.repo.repo,
-          ref: 'refs/tags/<tagname>',
-          sha: context.sha
-            })
+#     - name: Create tag
+#       uses: actions/github-script@v5
+#       with:
+#         script: |
+#           github.rest.git.createRef({
+#           owner: context.repo.owner,
+#           repo: context.repo.repo,
+#           ref: 'refs/tags/<tagname>',
+#           sha: context.sha
+#             })
             
     - name: Extract tag name
       id: tag
