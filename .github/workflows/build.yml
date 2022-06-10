@@ -52,7 +52,6 @@ jobs:
           owner: context.repo.owner,
           repo: context.repo.repo,
           ref: 'refs/tags/<tagname>',
-          run: echo "${{<tagname>}}",
           sha: context.sha
             })
             
