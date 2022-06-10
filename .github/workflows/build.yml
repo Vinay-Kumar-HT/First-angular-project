@@ -43,3 +43,18 @@ jobs:
       with:
         name: code-coverage-report
         path: output/test/code-coverage.html
+        
+    - name: Create tag
+      uses: actions/github-script@v5
+      with:
+        script: |
+          github.rest.git.createRef({
+          owner: context.repo.owner,
+          repo: context.repo.repo,
+          ref: 'refs/tags/<tagname>',
+          run: echo "${{<tagname>}}",
+          sha: context.sha
+            })
+            
+          
+      
